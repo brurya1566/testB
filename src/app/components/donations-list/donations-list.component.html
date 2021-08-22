@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-accordion *ngFor="let obj of donationList">
+    <mat-expansion-panel (opened)="panelOpenState = true;readonly(obj);"
+                         (closed)="panelOpenState = false;obj.edit=false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>{{obj.entityName}} </b> &nbsp; {{obj.sum}} ₪ שח
+          <span class="example-spacer"></span>
+          <button mat-icon-button (click)="openEditor(obj)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteObj(obj)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-panel-title>
+        <!-- <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+      <donation-details [donationObj]="obj" [disabled]="obj.readonly"></donation-details> 
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button mat-raised-button class="mat-button2" (click)="addDonation()">הוספת תרומה</button>
+
+
+</mat-card>

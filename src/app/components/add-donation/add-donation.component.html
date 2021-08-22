@@ -1,0 +1,84 @@
+<mat-card>
+  <form [formGroup]="addForm">
+    <h4><b>הוספת דיווח על עמותה</b></h4>
+    <!-- <custom-input [(inputModel)]="donationObj.entityName" [formControlName]="'entityName'" [title]='"שם הישות המדינית הזרה"' [req]="'true'"></custom-input>
+    <custom-input [(inputModel)]="donationObj.sum" [formControlName]="'sum'" [title]='"סכום התרומה בשח"' [req]="'true'"></custom-input>
+    <custom-input [(inputModel)]="donationObj.entityKindCode" [formControlName]="'entityKindCode'" [controlType]="'select'" [selectList]='entityList' [title]='"סוג הישות המדינית הזרה"' [req]="'true'">
+    </custom-input>
+    <custom-input [(inputModel)]="donationObj.donationPurpose" [formControlName]="'donationPurpose'" [title]='"יעוד התרומה"' [req]="'true'"></custom-input>
+    <custom-input [(inputModel)]="donationObj.donationConditions" [formControlName]="'donationConditions'" [title]='"התנאים לתרומה"'></custom-input>
+    <custom-input [(inputModel)]="donationObj.currencyTypeCode" [formControlName]="'currencyTypeCode'" [controlType]="'select'" [selectList]='currencyList' [title]='"סוג המטבע"' [req]="'true'">
+    </custom-input> -->
+    <!-- <custom-input [(inputModel)]="donationObj.forex" [form]="addForm" [formControlName]="'forex'" [title]='"שער ההמרה"' [req]="'true'"></custom-input> -->
+
+    <!-- התחלתי לפתח קומפוננטה שמכילה 
+custom input 
+אך מפאת קוצר הזמן חזרתי לאוביקטים הבסיסיים -->
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>שם הישות המדינית הזרה</mat-label>
+        <input [(ngModel)]="donationObj.entityName" pattern="[a-zA-Zא-ת  ]+" matInput id="entityName" name="entityName"
+          formControlName="entityName" required>
+          <mat-error *ngIf="addForm.controls.entityName">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>סכום התרומה בשח</mat-label>
+        <input [(ngModel)]="donationObj.sum" matInput id="sum" pattern="[0-9]+" name="sum" formControlName="sum" required>
+        <mat-error *ngIf="addForm.controls.sum">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>סוג הישות המדינית הזרה</mat-label>
+        <mat-select [(ngModel)]="donationObj.entityKindCode" id="entityKindCode" name="entityKindCode"
+          formControlName="entityKindCode" required>
+          <mat-option *ngFor="let item of entityList" [value]="item.code">
+            {{item.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-5 ">
+      <mat-form-field class="mat-form-field-block" appearance="outline">
+        <mat-label>יעוד התרומה</mat-label>
+        <input [(ngModel)]="donationObj.donationPurpose" pattern="[a-zA-Zא-ת  ]+" matInput id="donationPurpose" name="donationPurpose"
+          formControlName="donationPurpose" required>
+          <mat-error *ngIf="addForm.controls.donationPurpose">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="mat-form-field-block" appearance="outline">
+        <mat-label>התנאים לתרומה</mat-label>
+        <input [(ngModel)]="donationObj.donationConditions" id="donationConditions" name="donationConditions"
+          formControlName="donationConditions" matInput>
+          <mat-error *ngIf="addForm.controls.donationConditions">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>סוג המטבע</mat-label>
+        <mat-select [(ngModel)]="donationObj.currencyTypeCode" id="currencyTypeCode" name="currencyTypeCode"
+          formControlName="currencyTypeCode" required>
+          <mat-option *ngFor="let item of currencyList" [value]="item.code">
+            {{item.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>שער ההמרה</mat-label>
+        <input [(ngModel)]="donationObj.forex" matInput id="forex" pattern="[+-]?([0-9]*[.])?[0-9]+"name="forex" formControlName="forex" required>
+        <mat-error *ngIf="addForm.controls.forex">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div dir="ltr">
+      <button mat-raised-button class="mat-button2" (click)="addDonation()">שמירה</button>
+      <button mat-raised-button class="mat-button1" (click)="clear()">ניקוי</button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-block {
+    display: block !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgba(48, 45, 45, 0.12);
+}
+.mat-card,.mat-accordion{
+    margin: 20px;
+}
+.mat-form-field{
+    margin: 3px;
+}
+.mat-button1{
+    border-radius: 17px !important;
+    margin: 8px !important;
+    color: dodgerblue;
+    border-color: dodgerblue;
+    border: solid;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+.mat-button2{
+    border-radius: 17px !important;
+    margin: 8px !important;
+    background-color: dodgerblue;
+    color:white;
+    border-color: dodgerblue;
+    border: solid;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+.left-inline-div{
+    direction: ltr;
+    display: inline;;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+    color: rgba(0,0,0,.90);
+    /* אמורה למצוא את כל המחלקות שמביאות את השקיפות זוהי דוגמה */
+}
+.mat-expansion-panel-header.mat-expanded{
+    background-color: rgb(116, 177, 233) !important;
+}
+.mat-expansion-panel.mat-expanded{
+    border: solid;
+    border-color: rgb(116, 177, 233)
+}
+.mat-form-field.mat-warn .mat-input-element, .mat-form-field-invalid .mat-input-element {
+    caret-color: blue;
+}
+.mat-form-field-required-marker { color: red }

@@ -1,0 +1,68 @@
+<mat-card>
+    <form [formGroup]="editForm">
+      <div>
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>שם הישות המדינית הזרה</mat-label>
+          <input [(ngModel)]="donationObj.entityName" pattern="^[a-zA-Zא-ת  ]*$/" matInput id="entityName" [readonly]="donationObj.readonly" name="entityName"
+            formControlName="entityName" required>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>סכום התרומה בשח</mat-label>
+          <input [(ngModel)]="donationObj.sum" matInput id="sum" pattern="[0-9]+" name="sum" formControlName="sum" [readonly]="donationObj.readonly" required>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>סוג הישות המדינית הזרה</mat-label>
+          <mat-select [(ngModel)]="donationObj.entityKindCode" id="entityKindCode" name="entityKindCode"
+            formControlName="entityKindCode"  required>
+            <mat-option *ngFor="let item of entityList" [value]="item.code">
+              {{item.description}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-5 ">
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>יעוד התרומה</mat-label>
+          <input [(ngModel)]="donationObj.donationPurpose" matInput [readonly]="donationObj.readonly" id="donationPurpose" name="donationPurpose"
+            formControlName="donationPurpose" required>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>התנאים לתרומה</mat-label>
+          <input [(ngModel)]="donationObj.donationConditions" [readonly]="donationObj.readonly" id="donationConditions" name="donationConditions"
+            formControlName="donationConditions" matInput>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+  
+  
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>סוג המטבע</mat-label>
+          <mat-select [(ngModel)]="donationObj.currencyTypeCode" id="currencyTypeCode" name="currencyTypeCode"
+            formControlName="currencyTypeCode" required>
+            <mat-option *ngFor="let item of currencyList" [value]="item.code">
+              {{item.description}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field class="mat-form-field-block" appearance="outline">
+          <mat-label>שער ההמרה</mat-label>
+          <input [(ngModel)]="donationObj.forex" matInput id="forex" [readonly]="donationObj.readonly" pattern="[+-]?([0-9]*[.])?[0-9]+"name="forex" formControlName="forex" required>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+      <div dir="ltr">
+        <button mat-raised-button class="mat-button1" (click)="editDonation()">שמירה</button>
+        <button mat-raised-button class="mat-button2" (click)="clear()">ניקוי</button>
+      </div>
+    </form>
+  </mat-card>
